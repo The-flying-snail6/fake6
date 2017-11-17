@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>滚动应用</title>
+
+	<style>
+		*{
+			margin:0;
+			padding:0;
+		}
+		#fouc{
+			width:1000px;
+			height:200px;
+			margin:50px auto;
+			overflow:hidden;
+			position:relative;
+			border:1px solid #ddd;
+			
+		}
+		#fouc ul{
+			list-style:none;
+			width:4080px;
+			height:120px;
+			margin-top:40px;
+			position:absolute;
+			top:0;
+			left:0;
+			
+		}
+		#fouc ul li{
+			float:left;
+			margin-left:20px;
+		}
+		#fouc ul li:first-child{
+			margin-left:0;
+		}
+	</style>
+
+</head>
+
+<script src="jquery-3.2.1.min.js"></script>
+
+	<script>
+		$(function(){
+			var timer=null;
+			var index=0;
+			var oDiv = $('fouc');
+			var oLi = $('li');
+			var oUl = $('ul');
+
+			$('#fouc').mouseover(function(){
+				clearInterval(timer);
+			})
+			$('#fouc').mouseout(function(){
+				timer = setInterval (move,20);
+			})
+
+			var timer = setInterval (move,20);
+			function move(){
+			var leftNum = parseInt(getStyle(oUl[0],'left'));
+				if(leftNum>-2020){
+					leftNum -= 5;
+					oUl[0].style.left = leftNum + 'px';
+				}else{
+
+					
+					oUl[0].style.left =20+ 'px';
+					
+					
+				}
+				
+				function getStyle(obj,attr){
+					return obj.currentstyle? obj.currentstyle[attr] : getComputedStyle(obj)[attr];
+				}		
+			}
+
+		})
+	</script>
+
+<body>
+	<div id="fouc">
+		<ul>
+	    	<li><img src="img/a.jpg" ></li>
+	        <li><img src="img/b.jpg"></li>
+	        <li><img src="img/c.jpg" ></li>
+	        <li><img src="img/d.jpg"></li>
+	        <li><img src="img/e.jpg"></li>
+	        <li><img src="img/f.jpg"></li>
+	        <li><img src="img/g.jpg"></li>
+	        <li><img src="img/h.jpg"></li>
+	        <li><img src="img/i.jpg"></li>
+	        <li><img src="img/j.jpg"></li>
+	        <li><img src="img/k.jpg"></li>
+	        <li><img src="img/m.jpg"></li>
+	        <li><img src="img/a1.jpg" ></li>
+	        <li><img src="img/b1.jpg"></li>
+	        <li><img src="img/c1.jpg" ></li>
+	        <li><img src="img/d1.jpg"></li>
+	        <li><img src="img/e1.jpg"></li>
+	        <li><img src="img/f1.jpg"></li>
+	       
+	    </ul>
+
+	 	
+	</div>
+
+</body>
+</html>
